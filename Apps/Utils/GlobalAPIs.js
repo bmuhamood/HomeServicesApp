@@ -32,7 +32,6 @@ const getCategories=async()=>{
 `
 const result = await request(MASTER_URL, query);
 return result;
-
 }
 
 export default {

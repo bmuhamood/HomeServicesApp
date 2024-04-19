@@ -1,20 +1,35 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function Heading({ text, isViewAll }) {
-  return (
-    <View>
-      <Text style={styles.heading}>
-        {text}
-      </Text>
-    </View>
-  );
-}
+const Heading = ({ text, isViewAll, onPressViewAll }) => {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>{text}</Text>
+            {isViewAll && (
+                <TouchableOpacity onPress={onPressViewAll}>
+                    <Text style={styles.viewAll}>View All</Text>
+                </TouchableOpacity>
+            )}
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
-  heading: {
-    fontSize: 20,
-    fontFamily: 'outfit-medium',
-    marginBottom: 10,
-  },
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+        
+    },
+    text: {
+        fontSize: 20,
+        fontFamily: 'outfit-medium',
+    },
+    viewAll: {
+        color: 'blue',
+        fontFamily: 'outfit-medium',
+    },
 });
+
+export default Heading;
