@@ -31,6 +31,9 @@
         "projectId": "79ea5795-359f-4d8c-a72b-b92f72a0c94b"
       }
     },
-    "owner": "bmuhamood"
+    "owner": "bmuhamood",
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
