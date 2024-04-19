@@ -4,6 +4,8 @@ import Login from './Apps/Screens/LoginScreen/Login';
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import { useOAuth } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigation from './Apps/Navigations/TabNavigation';
 
 const tokenCache = {
   async getToken(key) {
@@ -29,7 +31,9 @@ export default function App() {
       {/* SignIn Component */}
       
         <SignedIn>
-          <Text>You are Signed in</Text>
+        <NavigationContainer>
+          <TabNavigation />
+        </NavigationContainer>
         </SignedIn>
 
         {/* SignOut */}
