@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Heading from '../../Components/Heading';
 import GlobalAPIs from '../../Utils/GlobalAPIs';
 import BusinessListItemSmall from './BusinessListItemSmall';
@@ -8,6 +8,7 @@ export default function BusinessList() {
     const [businessList, setBusinessList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showAll, setShowAll] = useState(false); 
 
     useEffect(() => {
         getBusinessList();
@@ -23,6 +24,10 @@ export default function BusinessList() {
         });
     };
 
+    const toggleShowAll = () => {
+        setShowAll(!showAll);
+    };
+
     if (loading) {
         return <Text>Loading...</Text>;
     }
@@ -32,16 +37,15 @@ export default function BusinessList() {
     }
 
     return (
-        <View style={{ marginTop: 10 }}>
-            <Heading text={'Latest Business'} isViewAll={true} />
-
+        <View>
+            <Heading text={'Latest Business'} isViewAll={true} onPressViewAll={toggleShowAll} /> 
             <FlatList
-            style={{marginTop:20}} 
-                data={businessList}
+                style={{ marginTop: 10 }}
+                data={showAll ? businessList : businessList.slice(0, 4)} 
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <View>
+                    <View style={{ marginRight: 10 }}>
                         <BusinessListItemSmall business={item} />
                     </View>
                 )}

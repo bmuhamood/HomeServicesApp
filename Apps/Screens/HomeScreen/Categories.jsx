@@ -35,7 +35,7 @@ export default function Categories() {
                         <View style={styles.iconContainer}>
                             <Image source={{ uri: item?.icon?.url }} style={{ width: 30, height: 30 }} />
                         </View>
-                        <Text style={{ fontFamily: 'outfit-medium', marginTop: 5 }}>{item?.name}</Text>
+                        <Text style={{ fontFamily: 'outfit', marginTop: 5 }}>{item?.name}</Text>
                     </View>
                 )}
             />
